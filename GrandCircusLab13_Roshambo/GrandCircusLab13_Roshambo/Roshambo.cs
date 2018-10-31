@@ -11,10 +11,11 @@ namespace GrandCircusLab13_Roshambo
         //build an enum that contains rock, paper, and sissors        
         rock,
         paper,
-        scisscor
+        scissors
     }
     public class RPSBattle
     {
+        
         public void Battle(string playerInput, string opponentInput, string playerName, string opponentName)
         {
             Console.WriteLine($"{playerName}: {playerInput}");
@@ -22,31 +23,22 @@ namespace GrandCircusLab13_Roshambo
 
             if (playerInput == opponentInput)
             {
+                Program.drawCount++;
                 Console.WriteLine("DRAW!");
             }
-            else if (playerInput == "rock" && opponentInput == "scissors")
+            else if ((playerInput == "rock" && opponentInput == "scissors") ||
+                    (playerInput == "paper" && opponentInput == "rock") ||
+                    (playerInput == "scissors" && opponentInput == "paper"))
             {
-                Console.WriteLine($"{playerName} wins!");
-            }
-            else if (playerInput == "paper" && opponentInput == "rock")
-            {
-                Console.WriteLine($"{playerName} wins!");
-            }
-            else if (playerInput == "scissors" && opponentInput == "paper")
-            {
+                Program.winCount++;
                 Console.WriteLine($"{playerName} wins!");
             }
 
-            else if (opponentInput == "rock" && playerInput == "scissors")
+            else if ((opponentInput == "rock" && playerInput == "scissors") ||
+                    (opponentInput == "paper" && playerInput == "rock") ||
+                    (opponentInput == "scissors" && playerInput == "paper"))
             {
-                Console.WriteLine($"{opponentName} wins!");
-            }
-            else if (opponentInput == "paper" && playerInput == "rock")
-            {
-                Console.WriteLine($"{opponentName} wins!");
-            }
-            else if (opponentInput == "scissors" && playerInput == "paper")
-            {
+                Program.lossCount++;
                 Console.WriteLine($"{opponentName} wins!");
             }
         }

@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 namespace GrandCircusLab13_Roshambo
 {
     class Program
-    {        
+    {
+        public static int drawCount;
+        public static int winCount;
+        public static int lossCount;
+
         static void Main(string[] args)
         {
             Validation validate = new Validation();
@@ -19,9 +23,9 @@ namespace GrandCircusLab13_Roshambo
             string userRPS;
             bool isPlayer = false;
             bool exitGame = false;
-            bool? yn = null;
+            
 
-            Console.WriteLine("Welcome to Rock Paper Scissors!");
+        Console.WriteLine("Welcome to Rock Paper Scissors!");
 
             //enter a name and select opponent
             Console.Write("Enter your name: ");
@@ -42,6 +46,7 @@ namespace GrandCircusLab13_Roshambo
             Player enemey = roshamboApp.ChoosePlayer(opponent.ToLower());
             while (!exitGame)
             {
+                bool? yn = null;
                 //promp player to select rock paper or sissors
                 do
                 {
@@ -67,6 +72,10 @@ namespace GrandCircusLab13_Roshambo
                 }
                 else if(yn == false)
                 {
+                    Console.WriteLine($"Wins: {winCount}\n" +
+                                      $"Losses: {lossCount}\n" +
+                                      $"Draws: {drawCount}");
+                    Console.ReadLine();
                     exitGame = true;
                 }
             }
